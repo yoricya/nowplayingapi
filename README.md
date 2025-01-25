@@ -1,6 +1,8 @@
 ### Now Playing API
 Simple _now playing api_ :P
 
+> Any response codes sent in http headers, in case of errors they are also transmitted along with json for convenience.
+
 ## Generate token
 
 Send GET to `https://nowplayingapi.yoricya.ru/generate`
