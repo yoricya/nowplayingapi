@@ -5,21 +5,17 @@ import sync
 
 pub struct Anti_ddos_Context {
 mut:
-	mutex &sync.Mutex
-	last_req i64
-	ban_time i64 = 50
+	mutex          &sync.Mutex
+	last_req       i64
+	ban_time       i64 = 50
 	temporally_ban bool
 }
 
 pub fn (mut app WebApp) anti_ddos_check(mut ctx WebCtx) bool {
-	if ctx.req.method != .get {
-		return true
-	}
-
-	ip := ctx.ip()
+	ip := ctx.ip() + '!' + ctx.req.method.str()
 
 	app.no_ddos_cache_rwmutex.rlock()
-	mut addos_ctx_opt := unsafe{app.no_ddos_cache[ip]}
+	mut addos_ctx_opt := unsafe { app.no_ddos_cache[ip] }
 	app.no_ddos_cache_rwmutex.runlock()
 
 	now := time.now().unix_milli()
@@ -34,7 +30,7 @@ pub fn (mut app WebApp) anti_ddos_check(mut ctx WebCtx) bool {
 		app.no_ddos_cache_rwmutex.unlock()
 
 		a
-	}else{
+	} else {
 		addos_ctx_opt
 	}
 
@@ -51,9 +47,9 @@ pub fn (mut app WebApp) anti_ddos_check(mut ctx WebCtx) bool {
 
 		if addos_ctx.ban_time >= 2000 {
 			addos_ctx.temporally_ban = true
-			println("[aDDOS] Temp ban: $ip")
+			println('[aDDOS] Temp ban: ${ip}')
 		}
-	}else{
+	} else {
 		addos_ctx.ban_time = 50
 	}
 
