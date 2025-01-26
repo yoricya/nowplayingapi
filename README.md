@@ -27,21 +27,21 @@ _{key}_ - Your private key
 
 __GET Parameters:__
 
-`service_name` _(Optional)_ - Name of music service _(For example: VKMusic)_ 
+`service_name` _(Optional)_ - Name of music service _(For example: VKMusic)_
 
-`name` - Name of track _(For example: Dedicated)_ 
+`name` - Name of track _(For example: Dedicated)_
 
-`author` - Author of track _(For example: ATB)_ 
+`author` - Author of track _(For example: ATB)_
 
-`album_image` _(Optional)_  - Url to album image _(For example: https://i.scdn.co/image/ab67616d0000b273a968feb0cd7b6a55b434530a)_ 
+`album_image` _(Optional)_  - Url to album image _(For example: https://i.scdn.co/image/ab67616d0000b273a968feb0cd7b6a55b434530a)_
 
-`track_url` _(Optional)_  - Url to track _(For example: https://vk.com/audio-2001724620_32724620)_ 
+`track_url` _(Optional)_  - Url to track _(For example: https://vk.com/audio-2001724620_32724620)_
 
-`album_name` _(Optional)_  - Album name _(For example: Dedicated)_ 
+`album_name` _(Optional)_  - Album name _(For example: Dedicated)_
 
 `start_timestamp` - Start listening timestamp in __string__ _(For example: 1737819287000)_
 
-`end_timestamp` - End listening timestamp in __string__ _(For example: 1737819542000)_  
+`end_timestamp` - End listening timestamp in __string__ _(For example: 1737819542000)_
 
 ## Get listen status by public token:
 
@@ -100,7 +100,7 @@ Response:
 }
 ```
 
-Minimum key length: __64__! Otherwise:
+Minimum key length: __96__! Otherwise:
 ```
 {
  "code": 400,
