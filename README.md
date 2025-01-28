@@ -1,3 +1,11 @@
+### Chrome plugin for vkmusic in vk.com
+> I dont know, how long it will work, perhaps until they radically change any functions on their page, but... it working
+
+> Aaand, it seems to me that it is possible to place Discord integration in the Chrome plugin, and I will try to do this, but for now VKMusic integration in discord requires 3 services (Chrome plugin -> nowPlayingApi -> Discord integration app)
+
+### Discord rich presence app
+> Im sure this will work for a long time and I will try to make a version in Swift to put the icon in the menu bar on Mac
+
 ### Now Playing API
 Simple _now playing api_ :P
 
@@ -42,6 +50,14 @@ __GET Parameters:__
 `start_timestamp` - Start listening timestamp in __string__ _(For example: 1737819287000)_
 
 `end_timestamp` - End listening timestamp in __string__ _(For example: 1737819542000)_
+
+## Reset listen status by key:
+
+Send GET to `https://nowplayingapi.yoricya.ru/set/{key}`
+
+_{key}_ - Your private key
+
+> No GET parameters
 
 ## Get listen status by public token:
 
