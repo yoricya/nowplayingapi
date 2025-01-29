@@ -3,14 +3,27 @@
 
 > Aaand, it seems to me that it is possible to place Discord integration in the Chrome plugin, and I will try to do this, but for now VKMusic integration in discord requires 3 services (Chrome plugin -> nowPlayingApi -> Discord integration app)
 
+__Todo:__
+
+ - [ ] - Embedded discord integration
+
 ### Discord rich presence app
-> Im sure this will work for a long time and I will try to make a version in Swift to put the icon in the menu bar on Mac
+> I will try to make a version in Swift to put the icon in the menu bar on Mac
+
+__Todo:__
+
+ - [ ] - Swift app in menu bar
 
 ### Now Playing API
 Simple _now playing api_ :P
 
 > Any response codes sent in http headers, in case of errors they are also transmitted along with json for convenience.
 
+__Todo:__
+
+ - [ ] - Support live translations _(optional `end_timestamp` field)_
+ - [ ] - Add field for activity type _(Listening, Watching or other)_
+ - [ ] - Functional field for callbacks
 ## Generate token
 
 Send GET to `https://nowplayingapi.yoricya.ru/generate`
