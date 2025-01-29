@@ -11,5 +11,5 @@ mut:
 
 pub fn (mut ctx WebCtx) create_message_response(code http.Status, message string) veb.Result {
 	ctx.res.set_status(code)
-	return ctx.text('{\n"code": ${code.int()},\n "message": "$message"\n}')
+	return ctx.text('{\n"code": ${code.int()},\n "message": "${message}"\n}')
 }

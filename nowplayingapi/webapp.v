@@ -1,7 +1,6 @@
 module main
 
 import veb
-import rand
 import sync
 import crypto.sha256
 import time
