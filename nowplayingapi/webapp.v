@@ -7,6 +7,8 @@ import time
 
 pub struct WebApp {
 	veb.Middleware[WebCtx]
+pub:
+	is_using_cloudflare bool
 pub mut:
 	cached_listen_now_rwmutex &sync.RwMutex
 	cached_listen_now         map[string]?&ListenNow

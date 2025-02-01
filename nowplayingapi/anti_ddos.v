@@ -12,7 +12,13 @@ mut:
 }
 
 pub fn (mut app WebApp) anti_ddos_check(mut ctx WebCtx) bool {
-	ip := ctx.ip() + '!' + ctx.req.method.str()
+	ip := if !app.is_using_cloudflare {
+		ctx.ip() + '!' + ctx.req.method.str()
+	} else {
+		ctx.get_custom_header('X-Forwarded-For') or {
+			ctx.get_custom_header('Cf-Connecting-IP') or { ctx.ip() }
+		} + '!' + ctx.req.method.str()
+	}
 
 	app.no_ddos_cache_rwmutex.rlock()
 	mut addos_ctx_opt := unsafe { app.no_ddos_cache[ip] }

@@ -13,6 +13,7 @@ fn main() {
 	mut webapp := WebApp{
 		cached_listen_now_rwmutex: sync.new_rwmutex()
 		no_ddos_cache_rwmutex:     sync.new_rwmutex()
+		is_using_cloudflare:       true // Change if you not using cloudflare
 	}
 
 	unsafe {
@@ -29,7 +30,7 @@ fn main() {
 	veb.run_at[WebApp, WebCtx](mut webapp, veb.RunParams{
 		family:               .ip
 		host:                 '0.0.0.0'
-		port:                 5581
+		port:                 5581 // Change port
 		show_startup_message: true
 		timeout_in_seconds:   8
 	}) or { panic(err) }
