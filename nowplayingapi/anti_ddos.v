@@ -22,8 +22,6 @@ pub fn (mut app WebApp) anti_ddos_check(mut ctx WebCtx) bool {
 		a + '!' + ctx.req.method.str()
 	}
 
-	println('CONN: ${ip}')
-
 	app.no_ddos_cache_rwmutex.rlock()
 	mut addos_ctx_opt := unsafe { app.no_ddos_cache[ip] }
 	app.no_ddos_cache_rwmutex.runlock()
