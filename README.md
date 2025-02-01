@@ -8,7 +8,7 @@ __Todo:__
  - [ ] - Embedded discord integration
 
 ### Discord rich presence apps
-> Yes, this is _pobeda_, i make two Rich Precense app
+> Yes, this is _pobeda_, i make two Rich Presence app
  - NodeJS Clossplatformed, _well, sort of_
  - SwiftUI Native for macOS (11+), _it seems to work_
 
