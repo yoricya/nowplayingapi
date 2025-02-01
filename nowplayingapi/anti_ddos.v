@@ -2,6 +2,7 @@ module main
 
 import time
 import sync
+import crypto.md5
 
 pub struct Anti_ddos_Context {
 mut:
@@ -22,8 +23,10 @@ pub fn (mut app WebApp) anti_ddos_check(mut ctx WebCtx) bool {
 		a + '!' + ctx.req.method.str()
 	}
 
+	hash_of_ip := md5.hexhash(ip)
+
 	app.no_ddos_cache_rwmutex.rlock()
-	mut addos_ctx_opt := unsafe { app.no_ddos_cache[ip] }
+	mut addos_ctx_opt := unsafe { app.no_ddos_cache[hash_of_ip] }
 	app.no_ddos_cache_rwmutex.runlock()
 
 	now := time.now().unix_milli()
@@ -34,7 +37,7 @@ pub fn (mut app WebApp) anti_ddos_check(mut ctx WebCtx) bool {
 		}
 
 		app.no_ddos_cache_rwmutex.lock()
-		app.no_ddos_cache[ip] = a
+		app.no_ddos_cache[hash_of_ip] = a
 		app.no_ddos_cache_rwmutex.unlock()
 
 		a
