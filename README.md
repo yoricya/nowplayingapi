@@ -10,7 +10,7 @@ __Todo:__
 ### Discord rich presence apps
 > Yes, this is _pobeda_, i make two Rich Presence app
  - NodeJS Clossplatformed, _well, sort of_
- - SwiftUI Native for macOS (11+), _it seems to work_
+ - Swift Native for macOS (11+), _it seems to work_
 
 ### Now Playing API
 Simple _now playing api_ :P
