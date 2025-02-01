@@ -7,12 +7,10 @@ __Todo:__
 
  - [ ] - Embedded discord integration
 
-### Discord rich presence app
-> I will try to make a version in Swift to put the icon in the menu bar on Mac
-
-__Todo:__
-
- - [X] - Swift app in menu bar
+### Discord rich presence apps
+> Yes, this is _pobeda_, i make two Rich Presence app
+ - NodeJS Clossplatformed, _well, sort of_
+ - SwiftUI Native for macOS (11+), _it seems to work_
 
 ### Now Playing API
 Simple _now playing api_ :P
