@@ -12,7 +12,7 @@ __Todo:__
 
 __Todo:__
 
- - [ ] - Swift app in menu bar
+ - [X] - Swift app in menu bar
 
 ### Now Playing API
 Simple _now playing api_ :P
