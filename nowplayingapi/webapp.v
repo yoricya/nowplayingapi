@@ -5,7 +5,6 @@ import sync
 import crypto.sha256
 import time
 
-@[heap]
 pub struct WebApp {
 	veb.Middleware[WebCtx]
 pub:
