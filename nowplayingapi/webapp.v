@@ -5,6 +5,7 @@ import sync
 import crypto.sha256
 import time
 
+@[heap]
 pub struct WebApp {
 	veb.Middleware[WebCtx]
 pub:
@@ -13,8 +14,8 @@ pub mut:
 	cached_listen_now_rwmutex &sync.RwMutex
 	cached_listen_now         map[string]?&ListenNow
 
-	no_ddos_cache_rwmutex &sync.RwMutex
-	no_ddos_cache         map[string]?&Anti_ddos_Context
+	// no_ddos_cache_rwmutex &sync.RwMutex
+	// no_ddos_cache         map[string]?&Anti_ddos_Context
 }
 
 fn (mut app WebApp) get_listen_now_obj(token string) ?&ListenNow {

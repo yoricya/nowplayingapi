@@ -12,13 +12,11 @@ fn main() {
 
 	mut webapp := WebApp{
 		cached_listen_now_rwmutex: sync.new_rwmutex()
-		no_ddos_cache_rwmutex:     sync.new_rwmutex()
-		is_using_cloudflare:       true // Change if you not using cloudflare
+		// no_ddos_cache_rwmutex:     sync.new_rwmutex()
 	}
 
-	unsafe {
-		webapp.use(handler: webapp.anti_ddos_check)
-	}
+	// Okay this not needed, because i use cloudflare (This throw segfault and idknow, how to fix it)
+	// webapp.use(handler: webapp.anti_ddos_check)
 
 	webapp.use(
 		handler: fn (mut ctx WebCtx) bool {
