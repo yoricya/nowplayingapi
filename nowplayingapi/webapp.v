@@ -9,6 +9,7 @@ pub struct WebApp {
 	veb.Middleware[WebCtx]
 pub:
 	is_using_cloudflare bool
+	redirect_main_page_to string
 pub mut:
 	cached_listen_now_rwmutex &sync.RwMutex
 	cached_listen_now         map[string]?&ListenNow
@@ -43,8 +44,17 @@ fn (mut app WebApp) create_listen_now_obj(token string) ?&ListenNow {
 	return listen_now
 }
 
-@['/generate']
+@['/']
 fn (mut app WebApp) web_generate(mut ctx WebCtx) veb.Result {
+	if !ctx.has_allow_access {
+		return ctx.create_message_response(.forbidden, 'Forbidden')
+	}
+
+	return ctx.redirect(app.redirect_main_page_to, veb.RedirectParams{typ: .temporary_redirect})
+}
+
+@['/generate']
+fn (mut app WebApp) main_page(mut ctx WebCtx) veb.Result {
 	if !ctx.has_allow_access {
 		return ctx.create_message_response(.forbidden, 'Forbidden')
 	}
@@ -98,114 +108,127 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 
 	token := key_to_token(key) or { return ctx.create_message_response(.bad_request, err.str()) }
 
-	mut ln_obj := app.get_listen_now_obj(token) or {
+	mut src_obj := app.get_listen_now_obj(token) or {
 		app.create_listen_now_obj(token) or {
 			return ctx.create_message_response(.internal_server_error, 'Internal error')
 		}
 	}
 
 	if ctx.query.len == 0 {
-		ln_obj.reset()
+		src_obj.reset()
 		return ctx.create_message_response(.ok, 'reset')
 	}
 
-	name := (ctx.query['name']).trim_space()
-	if name == '' {
+	// name field
+	tmp_name := (ctx.query['name']).trim_space()
+	if tmp_name == '' {
 		return ctx.create_message_response(.bad_request, "'name' field not found")
 	}
 
-	if name.len > 256 {
+	if tmp_name.len > 256 {
 		return ctx.create_message_response(.bad_request, "'name' field too long")
 	}
 
-	author := (ctx.query['author']).trim_space()
-	if author == '' {
+
+	// author field
+	tmp_author := (ctx.query['author']).trim_space()
+	if tmp_author == '' {
 		return ctx.create_message_response(.bad_request, "'author' field not found")
 	}
 
-	if author.len > 256 {
+	if tmp_author.len > 256 {
 		return ctx.create_message_response(.bad_request, "'author' field too long")
 	}
 
-	start_timestamp := (ctx.query['start_timestamp']).trim_space()
-	if start_timestamp == '' {
+
+	// start_timestamp field
+	tmp_start_timestamp := (ctx.query['start_timestamp']).trim_space()
+	if tmp_start_timestamp == '' {
 		return ctx.create_message_response(.bad_request, "'start_timestamp' field not found")
 	}
 
-	if !start_timestamp.is_int() {
+	if !tmp_start_timestamp.is_int() {
 		return ctx.create_message_response(.bad_request, "'start_timestamp' field not a number")
 	}
 
-	end_timestamp := (ctx.query['end_timestamp']).trim_space()
-	if end_timestamp == '' {
+
+	// end_timestamp field
+	tmp_end_timestamp := (ctx.query['end_timestamp']).trim_space()
+	if tmp_end_timestamp == '' {
 		return ctx.create_message_response(.bad_request, "'end_timestamp' field not found")
 	}
 
-	if !end_timestamp.is_int() {
+	if !tmp_end_timestamp.is_int() {
 		return ctx.create_message_response(.bad_request, "'end_timestamp' field not a number")
 	}
 
-	st := start_timestamp.i64()
-	en := end_timestamp.i64()
 
-	if en <= st {
+	// Check timestamps range
+	if tmp_end_timestamp.i64() <= tmp_start_timestamp.i64() {
 		return ctx.create_message_response(.bad_request, 'Illegal timestamps range')
 	}
 
-	track_url := (ctx.query['track_url']).trim_space()
-	if track_url != '' {
-		if track_url.len > 384 {
-			return ctx.create_message_response(.bad_request, "'track_url' field too long")
-		}
 
-		ln_obj.track_url = track_url
-	} else {
-		ln_obj.track_url = none
+	// ____ Optional fields ____
+
+
+	// track_url field
+	tmp_track_url := (ctx.query['track_url']).trim_space()
+	if tmp_track_url.len > 384 {
+		return ctx.create_message_response(.bad_request, "'track_url' field too long")
 	}
 
-	album_image := (ctx.query['album_image']).trim_space()
-	if album_image != '' {
-		if album_image.len > 384 {
-			return ctx.create_message_response(.bad_request, "'album_image' field too long (${album_image.len})")
-		}
-
-		ln_obj.album_image = album_image
-	} else {
-		ln_obj.album_image = none
+	if tmp_track_url != '' && !tmp_track_url.starts_with("http://") && !tmp_track_url.starts_with("https://")  {
+		return ctx.create_message_response(.bad_request, "Illegal data in 'track_url'")
 	}
 
-	album_name := (ctx.query['album_name']).trim_space()
-	if album_name != '' {
-		if album_name.len > 256 {
-			return ctx.create_message_response(.bad_request, "'album_name' field too long")
-		}
 
-		ln_obj.album_name = album_name
-	} else {
-		ln_obj.album_name = none
+	// album_image field
+	tmp_album_image := (ctx.query['album_image']).trim_space()
+	if tmp_album_image.len > 384 {
+		return ctx.create_message_response(.bad_request, "'album_image' field too long")
 	}
 
-	service_name := (ctx.query['service_name']).trim_space()
-	if service_name != '' {
-		if service_name.len > 16 {
-			return ctx.create_message_response(.bad_request, "'service_name' field too long")
-		}
-
-		ln_obj.service_name = service_name
-	} else {
-		ln_obj.service_name = 'default'
+	if tmp_album_image != '' && !tmp_album_image.starts_with("http://") && !tmp_album_image.starts_with("https://")  {
+		return ctx.create_message_response(.bad_request, "Illegal data in 'track_url'")
 	}
 
-	ln_obj.is_playing = true
 
+	// album_name field
+	tmp_album_name := (ctx.query['album_name']).trim_space()
+	if tmp_album_name.len > 256 {
+		return ctx.create_message_response(.bad_request, "'album_name' field too long")
+	}
+
+
+	// service_name field
+	tmp_service_name := (ctx.query['service_name'] or {"default"}).trim_space()
+	if tmp_service_name.len > 16 {
+		return ctx.create_message_response(.bad_request, "'service_name' field too long")
+	}
+
+
+	// Server timestamp
 	server_start_timestamp := time.now().unix_milli()
-	ln_obj.start_timestamp_on_server = server_start_timestamp
-	ln_obj.start_timestamp_on_server_str = server_start_timestamp.str()
 
-	ln_obj.name = name
-	ln_obj.author = author
-	ln_obj.start_timestamp = start_timestamp
-	ln_obj.end_timestamp = end_timestamp
+
+	// ___ Put data to src ____
+
+	src_obj.is_playing = true
+
+	src_obj.name = tmp_name
+	src_obj.author = tmp_author
+	src_obj.start_timestamp = tmp_start_timestamp
+	src_obj.end_timestamp = tmp_end_timestamp
+
+	src_obj.start_timestamp_on_server = server_start_timestamp
+	src_obj.start_timestamp_on_server_str = server_start_timestamp.str()
+
+	src_obj.track_url = if tmp_track_url == '' {none} else {tmp_track_url}
+	src_obj.album_image = if tmp_album_image == '' {none} else {tmp_album_image}
+	src_obj.album_name = if tmp_album_name == '' {none} else {tmp_album_name}
+
+	src_obj.service_name = tmp_service_name
 
 	return ctx.create_message_response(.ok, 'ok')
 }

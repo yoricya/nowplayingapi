@@ -12,6 +12,7 @@ fn main() {
 
 	mut webapp := WebApp{
 		cached_listen_now_rwmutex: sync.new_rwmutex()
+		redirect_main_page_to:     'https://github.com/yoricya/nowplayingapi'
 		// no_ddos_cache_rwmutex:     sync.new_rwmutex()
 	}
 
