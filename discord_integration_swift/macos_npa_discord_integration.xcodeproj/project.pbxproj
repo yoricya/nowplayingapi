@@ -13,7 +13,6 @@
 		E62323062D4BD6FA00ADD363 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62323052D4BD6FA00ADD363 /* api.swift */; };
 		E69190252D4E271500D4D763 /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69190242D4E271500D4D763 /* settings.swift */; };
 		E691902A2D4E3C6400D4D763 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E69190282D4E3C6400D4D763 /* README.md */; };
-		E691902B2D4E3C6400D4D763 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E69190292D4E3C6400D4D763 /* .gitignore */; };
 		E691AC552D4D05F90096C544 /* discord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC542D4D05F90096C544 /* discord.swift */; };
 		E691AC672D4D13C10096C544 /* RichPresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC5E2D4D13C10096C544 /* RichPresence.swift */; };
 		E691AC682D4D13C10096C544 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC5F2D4D13C10096C544 /* Enums.swift */; };
@@ -41,7 +40,6 @@
 		E62323052D4BD6FA00ADD363 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		E69190242D4E271500D4D763 /* settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
 		E69190282D4E3C6400D4D763 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E69190292D4E3C6400D4D763 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E691AC542D4D05F90096C544 /* discord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discord.swift; sourceTree = "<group>"; };
 		E691AC592D4D11DC0096C544 /* macos_npa_discord_integration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macos_npa_discord_integration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E691AC5E2D4D13C10096C544 /* RichPresence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichPresence.swift; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 		E62322EA2D4BCFB100ADD363 = {
 			isa = PBXGroup;
 			children = (
-				E69190292D4E3C6400D4D763 /* .gitignore */,
 				E69190282D4E3C6400D4D763 /* README.md */,
 				E62322F52D4BCFB200ADD363 /* macos_npa_discord_integration */,
 				E691AC592D4D11DC0096C544 /* macos_npa_discord_integration.app */,
@@ -201,7 +198,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E691902B2D4E3C6400D4D763 /* .gitignore in Resources */,
 				E691902A2D4E3C6400D4D763 /* README.md in Resources */,
 				E62322FE2D4BCFB400ADD363 /* Preview Assets.xcassets in Resources */,
 				E62322FB2D4BCFB400ADD363 /* Assets.xcassets in Resources */,
