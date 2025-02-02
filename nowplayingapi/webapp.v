@@ -114,7 +114,7 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 		return ctx.create_message_response(.bad_request, "'name' field not found")
 	}
 
-	if name.len > 64 {
+	if name.len > 256 {
 		return ctx.create_message_response(.bad_request, "'name' field too long")
 	}
 
@@ -123,7 +123,7 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 		return ctx.create_message_response(.bad_request, "'author' field not found")
 	}
 
-	if author.len > 64 {
+	if author.len > 256 {
 		return ctx.create_message_response(.bad_request, "'author' field too long")
 	}
 
@@ -154,7 +154,7 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 
 	track_url := (ctx.query['track_url']).trim_space()
 	if track_url != '' {
-		if track_url.len > 256 {
+		if track_url.len > 384 {
 			return ctx.create_message_response(.bad_request, "'track_url' field too long")
 		}
 
@@ -165,7 +165,7 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 
 	album_image := (ctx.query['album_image']).trim_space()
 	if album_image != '' {
-		if album_image.len > 256 {
+		if album_image.len > 384 {
 			return ctx.create_message_response(.bad_request, "'album_image' field too long (${album_image.len})")
 		}
 
@@ -176,7 +176,7 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 
 	album_name := (ctx.query['album_name']).trim_space()
 	if album_name != '' {
-		if album_name.len > 64 {
+		if album_name.len > 256 {
 			return ctx.create_message_response(.bad_request, "'album_name' field too long")
 		}
 
