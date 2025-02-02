@@ -56,6 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if let button = statusItem.button {
             button.image = NSImage(named: "npa_ico")
+            button.image?.isTemplate = true
             button.action = #selector(togglePopover)
             button.target = self
         }
