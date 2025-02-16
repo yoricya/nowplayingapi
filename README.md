@@ -46,11 +46,13 @@ _{key}_ - Your private key
 
 __GET Parameters:__
 
-`service_name` _(Optional)_ - Name of music service _(For example: VKMusic)_
-
 `name` - Name of track _(For example: Dedicated)_
 
 `author` - Author of track _(For example: ATB)_
+
+`start_timestamp` - Start listening timestamp in __string__ _(For example: 1737819287000)_
+
+`service_name` _(Optional)_ - Name of music service _(For example: VKMusic)_
 
 `album_image` _(Optional)_  - Url to album image _(For example: https://i.scdn.co/image/ab67616d0000b273a968feb0cd7b6a55b434530a)_
 
@@ -58,9 +60,9 @@ __GET Parameters:__
 
 `album_name` _(Optional)_  - Album name _(For example: Dedicated)_
 
-`start_timestamp` - Start listening timestamp in __string__ _(For example: 1737819287000)_
+`end_timestamp` _(Optional)_ - End listening timestamp in __string__, <ins>do not specify to set live broadcast</ins> _(For example: 1737819542000)_
 
-`end_timestamp` - End listening timestamp in __string__ _(For example: 1737819542000)_
+`activity_type` _(Optional)_ - Activity type in __integer__, defaults: <ins>(0 - Listening, 1 - Watching)</ins> _(For example: 0)_
 
 ## Reset listen status by key:
 
@@ -87,7 +89,9 @@ Example response:
   "start_timestamp_on_server_str": "1737837290440",
   "start_timestamp": "1737819287000",
   "end_timestamp": "1737819542000",
-  "track_url": "https://vk.com/audio-2001724620_32724620"
+  "track_url": "https://vk.com/audio-2001724620_32724620",
+  "is_live_broadcast": false,
+  "activity_type": 0
 }
 ```
 
