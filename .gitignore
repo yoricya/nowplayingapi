@@ -21,4 +21,4 @@ bin/
 /.gitattributes
 /.editorconfig
 
-./discord_integration_swift/macos_npa_discord_integration.xcodeproj/project.xcworkspace/xcuserdata/
+/discord_integration_swift/macos_npa_discord_integration.xcodeproj/
