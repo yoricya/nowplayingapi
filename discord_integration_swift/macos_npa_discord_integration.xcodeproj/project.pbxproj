@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E62322F72D4BCFB200ADD363 /* macos_npa_discord_integrationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62322F62D4BCFB200ADD363 /* macos_npa_discord_integrationApp.swift */; };
+		E62322FB2D4BCFB400ADD363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E62322FA2D4BCFB400ADD363 /* Assets.xcassets */; };
+		E62322FE2D4BCFB400ADD363 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E62322FD2D4BCFB400ADD363 /* Preview Assets.xcassets */; };
+		E62323062D4BD6FA00ADD363 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62323052D4BD6FA00ADD363 /* api.swift */; };
+		E69190252D4E271500D4D763 /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69190242D4E271500D4D763 /* settings.swift */; };
+		E691902A2D4E3C6400D4D763 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E69190282D4E3C6400D4D763 /* README.md */; };
+		E691AC552D4D05F90096C544 /* discord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC542D4D05F90096C544 /* discord.swift */; };
+		E691AC672D4D13C10096C544 /* RichPresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC5E2D4D13C10096C544 /* RichPresence.swift */; };
+		E691AC682D4D13C10096C544 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC5F2D4D13C10096C544 /* Enums.swift */; };
+		E691AC692D4D13C10096C544 /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC602D4D13C10096C544 /* JoinRequest.swift */; };
+		E691AC6A2D4D13C10096C544 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC612D4D13C10096C544 /* Delegate.swift */; };
+		E691AC6B2D4D13C10096C544 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC622D4D13C10096C544 /* Register.swift */; };
+		E691AC6C2D4D13C10096C544 /* SwordRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC632D4D13C10096C544 /* SwordRPC.swift */; };
+		E691AC6D2D4D13C10096C544 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC642D4D13C10096C544 /* Events.swift */; };
+		E691AC6E2D4D13C10096C544 /* RPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC652D4D13C10096C544 /* RPC.swift */; };
+		E691AC6F2D4D13C10096C544 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691AC662D4D13C10096C544 /* Utils.swift */; };
+		E691AC722D4D14630096C544 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = E691AC712D4D14630096C544 /* NIO */; };
+		E691AC742D4D14630096C544 /* NIOConcurrencyHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = E691AC732D4D14630096C544 /* NIOConcurrencyHelpers */; };
+		E691AC762D4D14630096C544 /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = E691AC752D4D14630096C544 /* NIOCore */; };
+		E691AC782D4D14630096C544 /* NIOEmbedded in Frameworks */ = {isa = PBXBuildFile; productRef = E691AC772D4D14630096C544 /* NIOEmbedded */; };
+		E691AC7A2D4D14630096C544 /* NIOFoundationCompat in Frameworks */ = {isa = PBXBuildFile; productRef = E691AC792D4D14630096C544 /* NIOFoundationCompat */; };
+		E691AC7D2D4D15D50096C544 /* BlueSocketTestCommonLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = E691AC7C2D4D15D50096C544 /* BlueSocketTestCommonLibrary */; };
+		E691AC7F2D4D15D50096C544 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = E691AC7E2D4D15D50096C544 /* Socket */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E62322F62D4BCFB200ADD363 /* macos_npa_discord_integrationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macos_npa_discord_integrationApp.swift; sourceTree = "<group>"; };
+		E62322FA2D4BCFB400ADD363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E62322FD2D4BCFB400ADD363 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E62322FF2D4BCFB400ADD363 /* macos_npa_discord_integration.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macos_npa_discord_integration.entitlements; sourceTree = "<group>"; };
+		E62323052D4BD6FA00ADD363 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
+		E69190242D4E271500D4D763 /* settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
+		E69190282D4E3C6400D4D763 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E691AC542D4D05F90096C544 /* discord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discord.swift; sourceTree = "<group>"; };
+		E691AC592D4D11DC0096C544 /* macos_npa_discord_integration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macos_npa_discord_integration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E691AC5E2D4D13C10096C544 /* RichPresence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichPresence.swift; sourceTree = "<group>"; };
+		E691AC5F2D4D13C10096C544 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		E691AC602D4D13C10096C544 /* JoinRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
+		E691AC612D4D13C10096C544 /* Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
+		E691AC622D4D13C10096C544 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		E691AC632D4D13C10096C544 /* SwordRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwordRPC.swift; sourceTree = "<group>"; };
+		E691AC642D4D13C10096C544 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		E691AC652D4D13C10096C544 /* RPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPC.swift; sourceTree = "<group>"; };
+		E691AC662D4D13C10096C544 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E62322F02D4BCFB100ADD363 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E691AC762D4D14630096C544 /* NIOCore in Frameworks */,
+				E691AC7A2D4D14630096C544 /* NIOFoundationCompat in Frameworks */,
+				E691AC7F2D4D15D50096C544 /* Socket in Frameworks */,
+				E691AC722D4D14630096C544 /* NIO in Frameworks */,
+				E691AC742D4D14630096C544 /* NIOConcurrencyHelpers in Frameworks */,
+				E691AC7D2D4D15D50096C544 /* BlueSocketTestCommonLibrary in Frameworks */,
+				E691AC782D4D14630096C544 /* NIOEmbedded in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E62322EA2D4BCFB100ADD363 = {
+			isa = PBXGroup;
+			children = (
+				E69190282D4E3C6400D4D763 /* README.md */,
+				E62322F52D4BCFB200ADD363 /* macos_npa_discord_integration */,
+				E691AC592D4D11DC0096C544 /* macos_npa_discord_integration.app */,
+			);
+			sourceTree = "<group>";
+		};
+		E62322F52D4BCFB200ADD363 /* macos_npa_discord_integration */ = {
+			isa = PBXGroup;
+			children = (
+				E691AC5C2D4D13C10096C544 /* ds_sw */,
+				E62322F62D4BCFB200ADD363 /* macos_npa_discord_integrationApp.swift */,
+				E62322FA2D4BCFB400ADD363 /* Assets.xcassets */,
+				E62322FF2D4BCFB400ADD363 /* macos_npa_discord_integration.entitlements */,
+				E62322FC2D4BCFB400ADD363 /* Preview Content */,
+				E62323052D4BD6FA00ADD363 /* api.swift */,
+				E691AC542D4D05F90096C544 /* discord.swift */,
+				E69190242D4E271500D4D763 /* settings.swift */,
+			);
+			path = macos_npa_discord_integration;
+			sourceTree = "<group>";
+		};
+		E62322FC2D4BCFB400ADD363 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E62322FD2D4BCFB400ADD363 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E691AC5C2D4D13C10096C544 /* ds_sw */ = {
+			isa = PBXGroup;
+			children = (
+				E691AC5D2D4D13C10096C544 /* Types */,
+				E691AC612D4D13C10096C544 /* Delegate.swift */,
+				E691AC622D4D13C10096C544 /* Register.swift */,
+				E691AC632D4D13C10096C544 /* SwordRPC.swift */,
+				E691AC642D4D13C10096C544 /* Events.swift */,
+				E691AC652D4D13C10096C544 /* RPC.swift */,
+				E691AC662D4D13C10096C544 /* Utils.swift */,
+			);
+			path = ds_sw;
+			sourceTree = "<group>";
+		};
+		E691AC5D2D4D13C10096C544 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				E691AC5E2D4D13C10096C544 /* RichPresence.swift */,
+				E691AC5F2D4D13C10096C544 /* Enums.swift */,
+				E691AC602D4D13C10096C544 /* JoinRequest.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E62322F22D4BCFB100ADD363 /* macos_npa_discord_integration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E62323022D4BCFB400ADD363 /* Build configuration list for PBXNativeTarget "macos_npa_discord_integration" */;
+			buildPhases = (
+				E62322EF2D4BCFB100ADD363 /* Sources */,
+				E62322F02D4BCFB100ADD363 /* Frameworks */,
+				E62322F12D4BCFB100ADD363 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = macos_npa_discord_integration;
+			packageProductDependencies = (
+				E691AC712D4D14630096C544 /* NIO */,
+				E691AC732D4D14630096C544 /* NIOConcurrencyHelpers */,
+				E691AC752D4D14630096C544 /* NIOCore */,
+				E691AC772D4D14630096C544 /* NIOEmbedded */,
+				E691AC792D4D14630096C544 /* NIOFoundationCompat */,
+				E691AC7C2D4D15D50096C544 /* BlueSocketTestCommonLibrary */,
+				E691AC7E2D4D15D50096C544 /* Socket */,
+			);
+			productName = macos_npa_discord_integration;
+			productReference = E691AC592D4D11DC0096C544 /* macos_npa_discord_integration.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E62322EB2D4BCFB100ADD363 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					E62322F22D4BCFB100ADD363 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = E62322EE2D4BCFB100ADD363 /* Build configuration list for PBXProject "macos_npa_discord_integration" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E62322EA2D4BCFB100ADD363;
+			packageReferences = (
+				E691AC702D4D14630096C544 /* XCRemoteSwiftPackageReference "swift-nio" */,
+				E691AC7B2D4D15D50096C544 /* XCRemoteSwiftPackageReference "BlueSocket" */,
+			);
+			productRefGroup = E62322EA2D4BCFB100ADD363;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E62322F22D4BCFB100ADD363 /* macos_npa_discord_integration */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E62322F12D4BCFB100ADD363 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E691902A2D4E3C6400D4D763 /* README.md in Resources */,
+				E62322FE2D4BCFB400ADD363 /* Preview Assets.xcassets in Resources */,
+				E62322FB2D4BCFB400ADD363 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E62322EF2D4BCFB100ADD363 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E691AC672D4D13C10096C544 /* RichPresence.swift in Sources */,
+				E691AC6D2D4D13C10096C544 /* Events.swift in Sources */,
+				E691AC552D4D05F90096C544 /* discord.swift in Sources */,
+				E69190252D4E271500D4D763 /* settings.swift in Sources */,
+				E691AC692D4D13C10096C544 /* JoinRequest.swift in Sources */,
+				E691AC6B2D4D13C10096C544 /* Register.swift in Sources */,
+				E691AC6F2D4D13C10096C544 /* Utils.swift in Sources */,
+				E691AC6E2D4D13C10096C544 /* RPC.swift in Sources */,
+				E691AC6C2D4D13C10096C544 /* SwordRPC.swift in Sources */,
+				E691AC6A2D4D13C10096C544 /* Delegate.swift in Sources */,
+				E62323062D4BD6FA00ADD363 /* api.swift in Sources */,
+				E691AC682D4D13C10096C544 /* Enums.swift in Sources */,
+				E62322F72D4BCFB200ADD363 /* macos_npa_discord_integrationApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E62323002D4BCFB400ADD363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E62323012D4BCFB400ADD363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		E62323032D4BCFB400ADD363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macos_npa_discord_integration/macos_npa_discord_integration.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = b2;
+				DEVELOPMENT_ASSET_PATHS = "\"macos_npa_discord_integration/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.yoricya.macos-npa-discord-integration";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E62323042D4BCFB400ADD363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macos_npa_discord_integration/macos_npa_discord_integration.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = b2;
+				DEVELOPMENT_ASSET_PATHS = "\"macos_npa_discord_integration/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.yoricya.macos-npa-discord-integration";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E62322EE2D4BCFB100ADD363 /* Build configuration list for PBXProject "macos_npa_discord_integration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E62323002D4BCFB400ADD363 /* Debug */,
+				E62323012D4BCFB400ADD363 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E62323022D4BCFB400ADD363 /* Build configuration list for PBXNativeTarget "macos_npa_discord_integration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E62323032D4BCFB400ADD363 /* Debug */,
+				E62323042D4BCFB400ADD363 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E691AC702D4D14630096C544 /* XCRemoteSwiftPackageReference "swift-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.80.0;
+			};
+		};
+		E691AC7B2D4D15D50096C544 /* XCRemoteSwiftPackageReference "BlueSocket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/BlueSocket.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E691AC712D4D14630096C544 /* NIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E691AC702D4D14630096C544 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIO;
+		};
+		E691AC732D4D14630096C544 /* NIOConcurrencyHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E691AC702D4D14630096C544 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOConcurrencyHelpers;
+		};
+		E691AC752D4D14630096C544 /* NIOCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E691AC702D4D14630096C544 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOCore;
+		};
+		E691AC772D4D14630096C544 /* NIOEmbedded */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E691AC702D4D14630096C544 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOEmbedded;
+		};
+		E691AC792D4D14630096C544 /* NIOFoundationCompat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E691AC702D4D14630096C544 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOFoundationCompat;
+		};
+		E691AC7C2D4D15D50096C544 /* BlueSocketTestCommonLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E691AC7B2D4D15D50096C544 /* XCRemoteSwiftPackageReference "BlueSocket" */;
+			productName = BlueSocketTestCommonLibrary;
+		};
+		E691AC7E2D4D15D50096C544 /* Socket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E691AC7B2D4D15D50096C544 /* XCRemoteSwiftPackageReference "BlueSocket" */;
+			productName = Socket;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E62322EB2D4BCFB100ADD363 /* Project object */;
+}
