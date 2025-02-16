@@ -19,8 +19,8 @@ Simple _now playing api_ :P
 
 __Todo:__
 
- - [ ] - Support live broadcast _(optional `end_timestamp` field)_
- - [ ] - Add field for activity type _(Listening, Watching or other)_
+ - [X] - Support live broadcast _(optional `end_timestamp` field)_
+ - [X] - Add field for activity type _(Listening, Watching or other)_
  - [ ] - Functional field for callbacks
 ## Generate token
 
