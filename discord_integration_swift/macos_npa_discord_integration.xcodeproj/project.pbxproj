@@ -358,7 +358,7 @@
 				CODE_SIGN_ENTITLEMENTS = macos_npa_discord_integration/macos_npa_discord_integration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = b2;
+				CURRENT_PROJECT_VERSION = b3;
 				DEVELOPMENT_ASSET_PATHS = "\"macos_npa_discord_integration/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -386,7 +386,7 @@
 				CODE_SIGN_ENTITLEMENTS = macos_npa_discord_integration/macos_npa_discord_integration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = b2;
+				CURRENT_PROJECT_VERSION = b3;
 				DEVELOPMENT_ASSET_PATHS = "\"macos_npa_discord_integration/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;

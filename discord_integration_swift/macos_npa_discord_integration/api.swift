@@ -15,7 +15,7 @@ struct Track: Codable {
     let author: String
     let service_name: String
     let start_timestamp: String
-    let end_timestamp: String
+    let end_timestamp: String?
     
     let album_image: String?
     let track_url: String?
@@ -147,7 +147,7 @@ class TrackModel: ObservableObject {
                 return
             }
             
-            let end_timestamp: Int? = Int(track.end_timestamp)
+            let end_timestamp: Int? = Int(track.end_timestamp!)
             if end_timestamp == nil {
                 return
             }
