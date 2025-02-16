@@ -44,11 +44,30 @@ function injectCode(src) {
 
         if (!baseurl.endsWith("/")) baseurl += "/"
 
+        if (key !== auth_data.key) {
+            let f = await fetch(baseurl+"key/"+key)
+            let j =  await f.json()
+
+            if (!f.ok) {
+                console.log(`[VKM LNOW] Server returned error (${j.code}): `+ j.message)
+                console.log(`[VKM LNOW] Used server: ${baseurl}`)
+                console.log(`[VKM LNOW] Plugin disabled.`)
+                alert(`Server returned error (${j.code}): `+ j.message)
+                return
+            }
+
+            auth_data = j
+        }
+
         localStorage.setItem("vkmlnow_baseurl_api", baseurl);
         localStorage.setItem("vkmlnow_basekey_api", key);
 
         localStorage.setItem("vkmlnow_inject_time", 0);
         localStorage.setItem("vkmlnow_reset", "0");
+
+        console.log(`[VKM LNOW] Plugin installed.`)
+        console.log(`[VKM LNOW] Used server: ${baseurl}`)
+        console.log(`[VKM LNOW] Public token: ${auth_data.token}`)
 
         alert("VKM Listening Now Plugin installed! Your public API token: "+auth_data.token)
     }

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "VKMusic Plugin",
-  "version": "2.0",
+  "version": "2.1",
   "description": "VKMusic Plugin openBETA",
   "permissions": ["scripting","storage"],
   "content_scripts": [
