@@ -44,8 +44,12 @@ fn (mut app WebApp) create_listen_now_obj(token string) ?&ListenNow {
 	return listen_now
 }
 
+
+
+// __________________ Web API Entry Points __________________
+
 @['/']
-fn (mut app WebApp) web_generate(mut ctx WebCtx) veb.Result {
+fn (mut app WebApp) web_main(mut ctx WebCtx) veb.Result {
 	if !ctx.has_allow_access {
 		return ctx.create_message_response(.forbidden, 'Forbidden')
 	}
@@ -54,7 +58,7 @@ fn (mut app WebApp) web_generate(mut ctx WebCtx) veb.Result {
 }
 
 @['/generate']
-fn (mut app WebApp) main_page(mut ctx WebCtx) veb.Result {
+fn (mut app WebApp) api_generate(mut ctx WebCtx) veb.Result {
 	if !ctx.has_allow_access {
 		return ctx.create_message_response(.forbidden, 'Forbidden')
 	}
@@ -65,22 +69,24 @@ fn (mut app WebApp) main_page(mut ctx WebCtx) veb.Result {
 		return ctx.create_message_response(.internal_server_error, 'Internal error')
 	}
 
+	ctx.content_type = "application/json"
 	return ctx.text('{\n"key": "${key}",\n"token": "${token}"\n}')
 }
 
 @['/key/:key']
-fn (mut app WebApp) web_key_key(mut ctx WebCtx, key string) veb.Result {
+fn (mut app WebApp) api_key_key(mut ctx WebCtx, key string) veb.Result {
 	if !ctx.has_allow_access {
 		return ctx.create_message_response(.forbidden, 'Forbidden')
 	}
 
 	token := key_to_token(key) or { return ctx.create_message_response(.bad_request, err.str()) }
 
+	ctx.content_type = "application/json"
 	return ctx.text('{\n"key": "${key}",\n"token": "${token}"\n}')
 }
 
 @['/get/:token']
-fn (mut app WebApp) web_get_token(mut ctx WebCtx, token string) veb.Result {
+fn (mut app WebApp) api_get_token(mut ctx WebCtx, token string) veb.Result {
 	if !ctx.has_allow_access {
 		return ctx.create_message_response(.forbidden, 'Forbidden')
 	}
@@ -89,11 +95,22 @@ fn (mut app WebApp) web_get_token(mut ctx WebCtx, token string) veb.Result {
 		return ctx.create_message_response(.not_found, 'Token not found')
 	}
 
-	st := ln_obj.start_timestamp.i64()
-	client_time_now := time.now().unix_milli() - (ln_obj.start_timestamp_on_server - st)
+	srv_time_now := time.now().unix_milli()
 
-	en := ln_obj.end_timestamp.i64()
-	if client_time_now > en {
+	st := ln_obj.start_timestamp.i64()
+	client_time_now := srv_time_now - (ln_obj.start_timestamp_on_server - st)
+
+	if !ln_obj.is_live_broadcast {
+
+		en := (ln_obj.end_timestamp or {
+			"0"
+		}).i64()
+
+		if client_time_now > en {
+			ln_obj.reset()
+		}
+
+	} else if ln_obj.start_timestamp_on_server - srv_time_now > (1000 * 60 * 60 * 2) { // Если на протяжении 2х часов не было активности - сбрасываем трансляцию
 		ln_obj.reset()
 	}
 
@@ -101,23 +118,27 @@ fn (mut app WebApp) web_get_token(mut ctx WebCtx, token string) veb.Result {
 }
 
 @['/set/:key']
-fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
+fn (mut app WebApp) api_set_by_key(mut ctx WebCtx, key string) veb.Result {
 	if !ctx.has_allow_access {
 		return ctx.create_message_response(.forbidden, 'Forbidden')
 	}
 
-	token := key_to_token(key) or { return ctx.create_message_response(.bad_request, err.str()) }
 
+	token := key_to_token(key) or { return ctx.create_message_response(.bad_request, err.str()) }
 	mut src_obj := app.get_listen_now_obj(token) or {
 		app.create_listen_now_obj(token) or {
 			return ctx.create_message_response(.internal_server_error, 'Internal error')
 		}
 	}
 
+
+	ctx.content_type = "application/json"
+
 	if ctx.query.len == 0 {
 		src_obj.reset()
 		return ctx.create_message_response(.ok, 'reset')
 	}
+
 
 	// name field
 	tmp_name := (ctx.query['name']).trim_space()
@@ -152,24 +173,28 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 	}
 
 
+	// _________ Optional fields _________
+
+
+	// init is_live_broadcast field
+	mut tmp_is_live_broadcast := false
+
+
 	// end_timestamp field
 	tmp_end_timestamp := (ctx.query['end_timestamp']).trim_space()
 	if tmp_end_timestamp == '' {
-		return ctx.create_message_response(.bad_request, "'end_timestamp' field not found")
+		tmp_is_live_broadcast = true
 	}
 
-	if !tmp_end_timestamp.is_int() {
+	if !tmp_is_live_broadcast && !tmp_end_timestamp.is_int() {
 		return ctx.create_message_response(.bad_request, "'end_timestamp' field not a number")
 	}
 
 
 	// Check timestamps range
-	if tmp_end_timestamp.i64() <= tmp_start_timestamp.i64() {
+	if !tmp_is_live_broadcast && tmp_end_timestamp.i64() <= tmp_start_timestamp.i64() {
 		return ctx.create_message_response(.bad_request, 'Illegal timestamps range')
 	}
-
-
-	// ____ Optional fields ____
 
 
 	// track_url field
@@ -208,6 +233,13 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 	}
 
 
+	// activity_type field
+	tmp_activity_type_str := (ctx.query['activity_type']).trim_space()
+	if tmp_activity_type_str != "" && !tmp_activity_type_str.is_int() {
+		return ctx.create_message_response(.bad_request, "'activity_type' must be integer")
+	}
+
+
 	// Server timestamp
 	server_start_timestamp := time.now().unix_milli()
 
@@ -219,7 +251,14 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 	src_obj.name = tmp_name
 	src_obj.author = tmp_author
 	src_obj.start_timestamp = tmp_start_timestamp
-	src_obj.end_timestamp = tmp_end_timestamp
+
+	src_obj.end_timestamp = if tmp_is_live_broadcast {
+		none
+	} else {
+		tmp_end_timestamp
+	}
+
+	src_obj.is_live_broadcast = tmp_is_live_broadcast
 
 	src_obj.start_timestamp_on_server = server_start_timestamp
 	src_obj.start_timestamp_on_server_str = server_start_timestamp.str()
@@ -227,6 +266,7 @@ fn (mut app WebApp) web_set_by_key(mut ctx WebCtx, key string) veb.Result {
 	src_obj.track_url = if tmp_track_url == '' {none} else {tmp_track_url}
 	src_obj.album_image = if tmp_album_image == '' {none} else {tmp_album_image}
 	src_obj.album_name = if tmp_album_name == '' {none} else {tmp_album_name}
+	src_obj.activity_type = if tmp_activity_type_str == '' {none} else {tmp_activity_type_str.int()}
 
 	src_obj.service_name = tmp_service_name
 
